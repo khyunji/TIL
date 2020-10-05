@@ -1,6 +1,4 @@
-# 200728 TIL
->Error & Exception Handling
-
+# 200728 Error & Exception Handling
 
 
 - input 값은 항상 `str` 형식으로 들어온다.

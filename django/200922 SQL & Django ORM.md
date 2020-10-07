@@ -299,13 +299,13 @@ TIL
    ```python
    # orm
    User.objects.filter(country='강원도', last_name='황').values('first_name')
-```
+   ```
    
-      ```sql
+   ```sql
    -- sql
    SELECT first_name FROM users_user
    WHERE country='강원도' AND last_name='황';
-      ```
+   ```
 
 
 
@@ -343,31 +343,30 @@ TIL
 
 3. 잔고는 오름차순, 나이는 내림차순으로 10명?
 
-      ```python
+       ```python
    # orm
    User.objects.order_by('balance', '-age')[:10]
-```
+    ```
    
    ```sql
    -- sql
    SELECT * FROM users_user ORDER BY balance, age DESC LIMIT 10;
    SELECT * FROM users_user ORDER BY age DESC, balance ASC LIMIT 10;
    ```
-   
+
 4. 성, 이름 내림차순 순으로 5번째 있는 사람
 
    ```python
    # orm
    User.objects.order_by('-last_name', '-first_name')[4]
-```
+   ```
    
-      ```sql
+   ```sql
    -- sql
    SELECT * FROM users_user
    ORDER BY last_name DESC, first_name DESC
    LIMIT 1 OFFSET 4;
-      ```
-
+   ```
 - `LIMIT 1 OFFSET 4;` : 앞에 네 명 빼고 한 사람을 가지고 오는 sql문
 
 

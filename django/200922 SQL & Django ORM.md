@@ -27,9 +27,9 @@ TIL
 
   * migrate
 
-    ```bash
+  ```bash
   $ python manage.py sqlmigrate users 0001
-    ```
+  ```
 
 * `db.sqlite3` 활용
 
@@ -335,18 +335,18 @@ TIL
    User.objects.order_by('balance')[:10]
    ```
 
-      ```sql
+   ```sql
    -- sql
    SELECT * FROM users_user
    ORDER BY balance ASC LIMIT 10;
-      ```
+   ```
 
 3. 잔고는 오름차순, 나이는 내림차순으로 10명?
 
-       ```python
+   ```python
    # orm
    User.objects.order_by('balance', '-age')[:10]
-    ```
+   ```
    
    ```sql
    -- sql
@@ -405,11 +405,11 @@ TIL
    User.objects.filter(last_name='김').aggregate(Avg('age'))
    ```
 
-      ```sql
+   ```sql
    -- sql
    SELECT AVG(age) FROM users_user
    WHERE last_name='김';
-      ```
+   ```
 
 3. 강원도에 사는 사람의 평균 계좌 잔고
 
@@ -442,11 +442,11 @@ TIL
    ```python
    # orm
    from django.db.models import Sum
-User.objects.aggregate(Sum('balance'))
+   User.objects.aggregate(Sum('balance'))
    ```
    
-      ```sql
+   ```sql
    -- sql
    SELECT SUM(balance) FROM users_user;
-      ```
+   ```
 

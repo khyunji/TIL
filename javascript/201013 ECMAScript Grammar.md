@@ -2,9 +2,20 @@
 
 [toc]
 
-## 0. ECMAScript?
+## 0. 들어가기
+
+### - ECMAScript?
 
 **`ECMAScript`는 [자바스크립트](https://developer.mozilla.org/ko/docs/Web/JavaScript)의 토대를 구성하는 스크립트 언어**이다. ECMAScript는 [ECMA International](http://www.ecma-international.org/) 표준화 기구에 의해서 ECMA-262 및 ECMA-402 스펙에서 표준화되었다.
+
+### - 코딩 컨벤션이란?
+
+읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약
+
+### - 코딩 컨벤션이 필요한 이유?
+
+1. 자바스크립트는 다른 언어에 비해 유연한 문법구조를 가지기 때문에 **개발자 간 통일된 규약이 없다면 코드의 의도를 파악하거나 오류를 찾기 어렵다.**
+2. 코딩 컨벤션을 준수하면 **가독성이 좋아지고, 성능에 영향을 주거나 오류를 발생기키는 잠재적 위험 요소를 줄여준다.** 특히, 규모가 큰 프로젝트일수록 유지보수 비용을 줄이는 데 도움이 된다.
 
 
 
@@ -22,25 +33,45 @@
 
 #### 식별자 작성 스타일
 
-- 기본적으로 `camelCase`로 작성한다. (lowcaseUppercase)
+- 기본적으로 `camelCase`로 작성한다. - 변수, 함수
 
 ```javascript
 // 숫자, 문자, 불린
-let dog
-let babyCat
+let dog;
+let babyCat;
 
 // 배열 - 복수형으로 작성한다.
-let animals
+let animals = [];
+
+// 정규표현식 - 'r'로 시작한다.
+const rDesc = /.*/;
 
 // 함수
-function getPropertyName () {}
+function getPropertyName() {
+    ...
+}
 
 // 이벤트 핸들러 - 'on'으로 시작한다.
-function onClick () {}
-function onKeyDown () {}
+function onClick = () => {};
+function onKeyDown = () => {};
 
 // 불린 반환 함수(리턴 값이 true, false) - 'is'로 시작한다.
-function isAuthenticated () {}
+let isAuthenticated = true;
+```
+
+
+
+- `예약어`를 사용하지 않는다.
+
+```javascript
+// 나쁜 예시
+let class;
+let enum;
+let extends;
+let super;
+let const;
+let import;
+let export;
 ```
 
 
@@ -48,24 +79,51 @@ function isAuthenticated () {}
 - `PascalCase`로 작성되는 경우 - 클래스, 생성자
 
 ```javascript
+class ConstructorName {
+    ...
+};
+
 class User {
     information(option) {
         this.name = option.name
     }
-}
+};
 
 const people = new User({
     name: '김현지',
-})
+});
 ```
 
 
 
-- `SNAKE_CASE`로 작성되는 경우 - 값이 변하지 않는다는 것을 알린다.
+- 영문 대문자 `SNAKE_CASE`로 작성되는 경우 - 상수 (값이 변하지 않는다는 것을 알린다.)
 
 ```javascript
-const API_KEY = 'api_key'
-const PI = '3.141592...'
+SYMBOLIC_CONSTANTS;
+const API_KEY = 'api_key';
+const PI = '3.141592...';
+```
+
+
+
+- 지역 변수 or private 변수 명은 `_`로 시작한다.
+
+```javascript
+let _privateVariableName;
+let _privateFunctionName;
+
+// 객체일 경우
+const customObjectName = {};
+customObjectName._privatePropertyName;
+```
+
+
+
+- URL, HTML 같은 범용적인 대문자 약어는 대문자 그대로 사용한다.
+
+```javascript
+parseHTML
+parseXML
 ```
 
 
